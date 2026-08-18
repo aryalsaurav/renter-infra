@@ -1,0 +1,35 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: renter
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io/foreground
+
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/aryalsaurav/renter.git
+    targetRevision: main
+    path: k8s/application
+
+    helm:
+      releaseName: renter
+      valueFiles:
+        - values.yaml
+        - values-prod.yaml
+    
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: renter
+    
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true
