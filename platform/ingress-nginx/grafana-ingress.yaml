@@ -5,6 +5,10 @@ metadata:
   namespace: monitoring
 spec:
   ingressClassName: nginx
+  tls:
+    - hosts:
+        - grafana.aryalsaurav.com.np
+      secretName: renter-tls
   rules:
     - host: grafana.aryalsaurav.com.np
       http:
