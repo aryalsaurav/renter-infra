@@ -13,7 +13,7 @@ spec:
     path: argocd/storage
   
   destination:
-    server: https;//kubernetes.default.svc
+    server: https://kubernetes.default.svc
     namespace: default
   
   syncPolicy:
