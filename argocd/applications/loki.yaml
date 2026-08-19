@@ -48,8 +48,8 @@ spec:
 
           persistence:
             enabled: true
-            storageClassName: gp3
             size: 10Gi
+            storageClass: gp3
             accessModes:
               - ReadWriteOnce
 
@@ -63,6 +63,12 @@ spec:
           replicas: 0
 
         gateway:
+          enabled: false
+        
+        chunksCache:
+          enabled: false
+        
+        resultsCache:
           enabled: false
 
   destination:
