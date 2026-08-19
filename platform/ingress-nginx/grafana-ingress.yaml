@@ -8,7 +8,7 @@ spec:
   tls:
     - hosts:
         - grafana.aryalsaurav.com.np
-      secretName: renter-tls
+      secretName: grafana-tls
   rules:
     - host: grafana.aryalsaurav.com.np
       http:
